@@ -497,7 +497,7 @@ extension SMB2FileHandle {
         }
         
         init(flags: Int32) {
-            switch flags & O_ACCMODE {
+            switch flags {
             case O_RDWR:
                 self = [.read, .write, .delete]
             case O_WRONLY:
@@ -555,7 +555,7 @@ extension SMB2FileHandle {
         }
         
         init(flags: Int32) {
-            switch flags & O_ACCMODE {
+            switch flags {
             case O_RDWR:
                 self = [.read, .write]
             case O_WRONLY:
