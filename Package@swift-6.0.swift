@@ -14,7 +14,6 @@ let package = Package(
     products: [
         .library(
             name: "AMSMB2",
-            type: .dynamic,
             targets: ["AMSMB2"]
         ),
     ],
@@ -41,7 +40,8 @@ let package = Package(
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("include"),
-                .headerSearchPath("include/apple"),
+                .headerSearchPath("include/apple", .when(platforms: [.iOS, .macOS, .macCatalyst, .tvOS, .watchOS])),
+                .headerSearchPath("include/musl", .when(platforms: [.linux])),
                 .headerSearchPath("include/smb2"),
                 .headerSearchPath("lib"),
                 .define("_U_", to: "__attribute__((unused))"),
