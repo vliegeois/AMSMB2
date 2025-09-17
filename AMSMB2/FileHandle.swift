@@ -15,6 +15,8 @@ typealias smb2fh = OpaquePointer
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 let O_SYMLINK: Int32 = O_NOFOLLOW
+import SMB2.SwiftHelper
+let O_ACCMODE: Int32 = swift_O_ACCMODE()
 #endif
 
 final class SMB2FileHandle: @unchecked Sendable {
