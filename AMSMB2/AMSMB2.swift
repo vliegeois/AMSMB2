@@ -52,6 +52,15 @@ public class SMB2Manager: NSObject, NSSecureCoding, Codable, NSCopying, CustomRe
         }
     }
 
+    public var share: String? {
+        client?.share
+    }
+    
+    public var server: String? {
+        client?.server
+    }
+
+    
     override public var debugDescription: String {
         var result = ""
         for (label, value) in customMirror.children {
@@ -611,7 +620,7 @@ public class SMB2Manager: NSObject, NSSecureCoding, Codable, NSCopying, CustomRe
        - destination:  Item that symbolic link will point to.
        - completionHandler: closure will be run after reading link is completed.
      */
-    func createSymbolicLink(
+    open func createSymbolicLink(
         atPath path: String, withDestinationPath destination: String,
         completionHandler: SimpleCompletionHandler
     ) {
@@ -627,7 +636,7 @@ public class SMB2Manager: NSObject, NSSecureCoding, Codable, NSCopying, CustomRe
        - path: The path of a file or directory.
        - destination:  Item that symbolic link will point to.
      */
-    func createSymbolicLink(atPath path: String, withDestinationPath destination: String) async throws {
+    open func createSymbolicLink(atPath path: String, withDestinationPath destination: String) async throws {
         try await withCheckedThrowingContinuation { continuation in
             createSymbolicLink(atPath: path, withDestinationPath: destination, completionHandler: asyncHandler(continuation))
         }
