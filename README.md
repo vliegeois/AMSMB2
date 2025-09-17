@@ -8,6 +8,13 @@ This is small Swift library for iOS, macOS and tvOS which wraps [libsmb2](https:
 [![License][license-image]][license-url]
 [![Release version][release-image]][release-url]
 
+## Get libsmb2 
+
+```bash
+git submodule init
+git submodule update 
+```
+
 
 ## Getting Started
 
